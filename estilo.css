@@ -658,7 +658,7 @@ p{ margin:0; }
 @media (min-width:600px){ .cartoes{ grid-template-columns:repeat(2,1fr); gap:16px; } }
 /* em duas colunas sobra uma célula no fim: o último cartão fecha a linha e o
    conteúdo se reparte em duas colunas, senão sobrava um vazio à direita */
-@media (min-width:600px) and (max-width:959px){
+@media (min-width:600px){
   .cartoes .cartao:last-child{
     grid-column:1 / -1;
     display:grid;
@@ -677,6 +677,8 @@ p{ margin:0; }
   }
 }
 @media (min-width:960px){ .cartoes{ grid-template-columns:repeat(3,1fr); gap:18px; } }
+/* com 8 cartoes a ultima linha tem 2: o ultimo ocupa duas colunas e fecha */
+@media (min-width:960px){ .cartoes .cartao:last-child{ grid-column:span 2; } }
 
 .cartao{
   position:relative;
@@ -832,52 +834,42 @@ p{ margin:0; }
 /* lugar reservado do mapa: no desktop a coluna de texto acabava bem antes da
    ficha ao lado e sobrava um vão de quase 200px. Em vez de esticar o texto,
    o vão passa a mostrar onde o mapa entra quando o endereço chegar. */
-.mapa-reserva{
+/* Mapa da loja. Entrou em 28/09/2026, quando o endereco chegou. */
+.mapa{
   margin-top:clamp(26px, 4vw, 38px);
-  border:1px dashed rgba(0,100,143,.45);
+  border:1px solid var(--linha-clara);
   border-radius:var(--raio);
-  background:
-    linear-gradient(rgba(255,255,255,.72), rgba(255,255,255,.72)),
-    repeating-linear-gradient(45deg, rgba(0,100,143,.08) 0 10px, transparent 10px 20px);
-  padding:20px 22px;
-  min-height:130px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:8px;
+  overflow:hidden;
+  background:var(--papel-alto);
 }
-
-.mapa-reserva__titulo{
+.mapa iframe{
+  display:block;
+  width:100%;
+  height:210px;
+  border:0;
+}
+.mapa__link{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:48px;
+  padding:0 18px;
+  border-top:1px solid var(--linha-clara);
   font-family:var(--f-mono);
-  font-size:11.5px;
+  font-size:12px;
   font-weight:500;
-  letter-spacing:.18em;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--azul-tinta);
+  text-decoration:none;
+  transition:background .3s ease;
 }
-.mapa-reserva[data-fill] .mapa-reserva__titulo::after{
-  content:"a preencher";
-  display:inline-block;
-  margin-left:8px;
-  vertical-align:middle;
-  font-size:9.5px;
-  font-weight:600;
-  letter-spacing:.1em;
-  color:var(--tinta);
-  background:rgba(239,192,23,.42);
-  border-radius:4px;
-  padding:2px 6px;
-}
-
-.mapa-reserva__texto{
-  font-size:15.5px;
-  line-height:1.5;
-  color:var(--texto-escuro-2);
-  max-width:34ch;
-}
+.mapa__link:hover{ background:rgba(0,100,143,.07); }
+.mapa__link svg{ transition:transform .3s ease; }
+.mapa__link:hover svg{ transform:translateX(2px); }
 
 @media (min-width:900px){
-  .mapa-reserva{ min-height:168px; }
+  .mapa iframe{ height:250px; }
 }
 
 .ficha{
@@ -988,6 +980,17 @@ p{ margin:0; }
   font-size:13px;
   color:var(--texto-claro-2);
 }
+.contato__aviso a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.3);
+  padding-bottom:3px;
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  transition:color .3s ease, border-color .3s ease;
+}
+.contato__aviso a:hover{ color:var(--texto-claro); border-bottom-color:var(--ouro); }
 
 /* ==========================================================================
    12. Rodapé
