@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://PREENCHER-DOMINIO/sitemap.xml
+Sitemap: https://eletronicamaster.com/sitemap.xml
