@@ -225,9 +225,29 @@ p{ margin:0; }
 .secao--claro .botao--linha{ border-color:var(--linha-clara); color:var(--texto-escuro); }
 .secao--claro .botao--linha:hover{ border-color:var(--azul-tinta); color:var(--azul-tinta); }
 
+.nav__acoes{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+
+/* Avaliar no Google fica branco de proposito: o dourado e do WhatsApp, que e a
+   acao principal, e o branco mantem o Google como segunda opcao visivel. */
+.botao--google{
+  background:var(--papel-alto);
+  border-color:var(--linha-clara);
+  color:var(--tinta);
+  gap:8px;
+}
+.botao--google:hover{ border-color:var(--azul-tinta); transform:translateY(-2px); }
+.ico-google{ flex:0 0 auto; }
+
 .botao--grande{ min-height:56px; font-size:17px; padding:16px 26px; }
 .botao--bloco{ width:100%; }
 .botao--nav{ min-height:44px; padding:10px 16px; font-size:15px; }
+
+/* abaixo de 520px a barra nao comporta os dois rotulos: sobra o simbolo do
+   Google, que o aria-label e o title explicam */
+@media (max-width:519px){
+  .botao--google{ padding:10px; min-width:44px; }
+  .botao--google span{ display:none; }
+}
 
 .ico-zap{ flex:0 0 auto; }
 
@@ -304,7 +324,7 @@ p{ margin:0; }
   .nav__descritor{ display:block; }
 }
 
-@media (min-width:860px){
+@media (min-width:1060px){
   .nav__links{
     display:flex;
     align-items:center;
@@ -327,9 +347,9 @@ p{ margin:0; }
   .nav__links a:hover{ color:var(--azul-tinta); background:rgba(0,100,143,.07); }
 }
 
-/* de 860 a 1079 os links entram comprimidos para caber ao lado do descritor;
-   da faixa cheia em diante voltam ao espaçamento de projeto */
-@media (min-width:1080px){
+/* de 1060 a 1239 os links entram comprimidos para caber ao lado do descritor
+   e dos dois botoes; da faixa cheia em diante voltam ao espacamento de projeto */
+@media (min-width:1240px){
   .nav__links{ gap:6px; margin-right:18px; }
   .nav__links a{ padding:0 14px; font-size:15.5px; }
 }
