@@ -658,7 +658,7 @@ p{ margin:0; }
 @media (min-width:600px){ .cartoes{ grid-template-columns:repeat(2,1fr); gap:16px; } }
 /* em duas colunas sobra uma célula no fim: o último cartão fecha a linha e o
    conteúdo se reparte em duas colunas, senão sobrava um vazio à direita */
-@media (min-width:600px){
+@media (min-width:600px) and (max-width:959px){
   .cartoes .cartao:last-child{
     grid-column:1 / -1;
     display:grid;
@@ -677,8 +677,6 @@ p{ margin:0; }
   }
 }
 @media (min-width:960px){ .cartoes{ grid-template-columns:repeat(3,1fr); gap:18px; } }
-/* com 8 cartoes a ultima linha tem 2: o ultimo ocupa duas colunas e fecha */
-@media (min-width:960px){ .cartoes .cartao:last-child{ grid-column:span 2; } }
 
 .cartao{
   position:relative;
@@ -834,6 +832,81 @@ p{ margin:0; }
 /* lugar reservado do mapa: no desktop a coluna de texto acabava bem antes da
    ficha ao lado e sobrava um vão de quase 200px. Em vez de esticar o texto,
    o vão passa a mostrar onde o mapa entra quando o endereço chegar. */
+/* Coleta a domicilio: e promessa que puxa a conversa, entao vem antes do CTA.
+   Barra dourada a esquerda porque e o mesmo fio vivo das etiquetas, nao botao. */
+.coleta{
+  margin-top:26px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:16px 18px;
+  background:var(--papel-alto);
+  border:1px solid var(--linha-clara);
+  border-left:3px solid var(--ouro);
+  border-radius:var(--raio);
+}
+.coleta__ico{ flex:0 0 auto; color:var(--azul-tinta); margin-top:3px; }
+.coleta__titulo{
+  font-family:var(--f-mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--tinta);
+  margin-bottom:5px;
+}
+.coleta__texto p:last-child{
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--texto-escuro-2);
+}
+
+/* coluna da direita do atendimento: ficha da loja e janela de avaliacao */
+.atend__lado{ display:grid; gap:clamp(18px, 2.4vw, 24px); align-content:start; }
+
+/* Janela de avaliacao no Google. De proposito nao e dourada: dourado e a cor
+   do WhatsApp, e avaliar e acao secundaria, entao usa o azul de link. */
+.avaliacao{
+  background:rgba(0,173,238,.07);
+  border:1px solid rgba(0,100,143,.22);
+  border-radius:var(--raio);
+  padding:clamp(20px, 3vw, 26px);
+}
+.avaliacao__etiqueta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--azul-tinta);
+  margin-bottom:12px;
+}
+.avaliacao__titulo{
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  line-height:1.25;
+  color:var(--tinta);
+}
+.avaliacao__corpo{
+  margin-top:8px;
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--texto-escuro-2);
+}
+.avaliacao .botao{ margin-top:18px; }
+
+/* acao secundaria da pagina clara: contorno azul, nunca dourado */
+.botao--azul{
+  border-color:var(--azul-tinta);
+  color:var(--azul-tinta);
+  background:transparent;
+}
+.botao--azul:hover{ background:var(--azul-tinta); color:#fff; transform:translateY(-2px); }
+
 /* Mapa da loja. Entrou em 28/09/2026, quando o endereco chegou. */
 .mapa{
   margin-top:clamp(26px, 4vw, 38px);
