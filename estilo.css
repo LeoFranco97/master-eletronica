@@ -236,6 +236,17 @@ p{ margin:0; }
   gap:8px;
 }
 .botao--google:hover{ border-color:var(--azul-tinta); transform:translateY(-2px); }
+
+/* Instagram entra so como simbolo: o glifo e reconhecido sem rótulo e a barra
+   nao comporta um terceiro rótulo ao lado do Google e do WhatsApp */
+.botao--insta{
+  background:var(--papel-alto);
+  border-color:var(--linha-clara);
+  color:var(--tinta);
+}
+/* dupla classe para vencer o padding de .botao--nav, que vem depois no arquivo */
+.botao--nav.botao--insta{ padding:10px; min-width:44px; }
+.botao--insta:hover{ border-color:var(--azul-tinta); color:var(--azul-tinta); transform:translateY(-2px); }
 .ico-google{ flex:0 0 auto; }
 
 .botao--grande{ min-height:56px; font-size:17px; padding:16px 26px; }
@@ -247,6 +258,13 @@ p{ margin:0; }
 @media (max-width:519px){
   .botao--google{ padding:10px; min-width:44px; }
   .botao--google span{ display:none; }
+}
+
+/* abaixo de 400px os tres botoes so caberiam encolhendo o WhatsApp, que e a
+   acao principal da pagina. Quem sai da barra e o Instagram, que continua
+   no bloco de contato e no rodape. */
+@media (max-width:399px){
+  .botao--insta{ display:none; }
 }
 
 .ico-zap{ flex:0 0 auto; }
@@ -324,7 +342,7 @@ p{ margin:0; }
   .nav__descritor{ display:block; }
 }
 
-@media (min-width:1060px){
+@media (min-width:1120px){
   .nav__links{
     display:flex;
     align-items:center;
@@ -347,9 +365,9 @@ p{ margin:0; }
   .nav__links a:hover{ color:var(--azul-tinta); background:rgba(0,100,143,.07); }
 }
 
-/* de 1060 a 1239 os links entram comprimidos para caber ao lado do descritor
-   e dos dois botoes; da faixa cheia em diante voltam ao espacamento de projeto */
-@media (min-width:1240px){
+/* de 1120 a 1279 os links entram comprimidos para caber ao lado do descritor
+   e dos tres botoes; da faixa cheia em diante voltam ao espacamento de projeto */
+@media (min-width:1280px){
   .nav__links{ gap:6px; margin-right:18px; }
   .nav__links a{ padding:0 14px; font-size:15.5px; }
 }
